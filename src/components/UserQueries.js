@@ -45,7 +45,7 @@ export default class UserQueries extends Component {
                   <div className="tile is-4 is-parent  is-vertical">
                     { 
                       this.state.products && this.state.products.length > 0
-                      ? this.state.products.map(product => <Userquery query= {product.query} name={product.name} id={product.email_id} key={product.email_id} />)
+                      ? this.state.products.map(product => <Userquery user_query= {product.user_query} user_name={product.user_name} id={product.email_id} key={product.email_id} />)
                       : <div className="tile notification is-warning">No Open User Queries</div>
                     }
                   </div>

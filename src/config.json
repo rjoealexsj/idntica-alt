@@ -1,6 +1,6 @@
 {
     "api": { 
-      "invokeUrl": "https://sk1eejydg0.execute-api.ap-south-1.amazonaws.com/dev"
+      "invokeUrl": "https://sk1eejydg0.execute-api.ap-south-1.amazonaws.com/dev_1"
     },
     "cognito": {
       "REGION": "ap-south-1",

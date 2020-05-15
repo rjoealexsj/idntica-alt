@@ -1,12 +1,12 @@
 import React, { Component, Fragment }  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default class ContactUs extends Component {
+export default class ContactUsUpdate extends Component {
 
   state = {
     isEditMode: false,
-    updatedname: this.props.name,
-    updatedquery: this.props.query
+    updatedname: this.props.user_name,
+    updatedquery: this.props.user_query
   }
 
   handleProductEdit = event => {
@@ -38,14 +38,24 @@ export default class ContactUs extends Component {
         {
           this.state.isEditMode 
           ? <div>
-              <p>Edit product name</p>
+              <p>Update User name</p>
               <input 
                 className="input is-medium"
                 type="text" 
-                placeholder="Enter name"
+                placeholder="Update name"
                 value={this.state.updatedname}
                 onChange={this.onAddProductNameChange}
               />
+
+              <p>Update Query</p>
+              <input 
+                className="input is-medium"
+                type="text" 
+                placeholder="Update Query"
+                value={this.state.updatedquery}
+                onChange={this.onAddProductQueryChange}
+              />
+
               <p className="product-id">id: { this.props.email_id }</p>
               <button type="submit" 
                 className="button is-info is-small"
@@ -53,10 +63,10 @@ export default class ContactUs extends Component {
               >save</button>
             </div>
           : <div>
-              <p className="product-title">User Name: {this.props.name }</p>
-              <p className="product-id">Email ID:{ this.props.id }</p>
+              <p className="product-title">User Name: {this.props.user_name }</p>
+              <p className="product-id">Email ID:{ this.props.email_id }</p>
               
-              <p className="product-id">Query: { this.props.query }</p>
+              <p className="product-id">Query: { this.props.user_query }</p>
             </div>
         }
       </div>

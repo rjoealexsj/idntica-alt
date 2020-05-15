@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Products from './components/Products';
 import ContactUs from './components/ContactUs';
+import ContactUsUpdate from './components/ContactUsUpdate';
+
 import Userquery from './components/Userquery';
 import UserQueries from './components/UserQueries';
 
@@ -73,6 +75,8 @@ async componentDidMount(){
               <Route exact path="/" render={(props) => <Home {...props} auth={authProps} />} />
               <Route exact path="/products" render={(props) => <Products {...props} auth={authProps} />} />
               <Route exact path="/contactus" render={(props) => <ContactUs {...props} auth={authProps} />} />
+              <Route exact path="/contactusupdate" render={(props) => <ContactUsUpdate {...props} auth={authProps} />} />
+
               <Route exact path="/userquery" render={(props) => <Userquery {...props} auth={authProps} />} />
               <Route exact path="/userqueries" render={(props) => <UserQueries {...props} auth={authProps} />} />
               

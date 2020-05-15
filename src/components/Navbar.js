@@ -36,6 +36,9 @@ export default class Navbar extends Component {
             </a>
             <a href="/contactus" className="navbar-item">
                   Contact Us
+          </a>
+          <a href="/contactusupdate" className="navbar-item">
+                  Contact Us Update
           </a> 
           <a href="/userqueries" className="navbar-item">
                   User Queries

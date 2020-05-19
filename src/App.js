@@ -5,10 +5,18 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Products from './components/Products';
 import ContactUs from './components/ContactUs';
+import ContactusNew from './components/contactus/ContactusNew';
+
 import ContactUsUpdate from './components/ContactUsUpdate';
+import ContactusupdateNew from './components/contactus/ContactusupdateNew';
+
 
 import Userquery from './components/Userquery';
+import Userquerynew from './components/contactus/Userquerynew';
+
+
 import UserQueries from './components/UserQueries';
+import UserqueriesNew from './components/contactus/UserqueriesNew';
 
 import ProductAdmin from './components/ProductAdmin';
 import LogIn from './components/auth/LogIn';
@@ -22,6 +30,8 @@ import Footer from './components/Footer';
 import { Auth } from 'aws-amplify';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
+
 library.add(faEdit);
 
 class App extends Component {
@@ -75,10 +85,17 @@ async componentDidMount(){
               <Route exact path="/" render={(props) => <Home {...props} auth={authProps} />} />
               <Route exact path="/products" render={(props) => <Products {...props} auth={authProps} />} />
               <Route exact path="/contactus" render={(props) => <ContactUs {...props} auth={authProps} />} />
+              <Route exact path="/contactusnew" render={(props) => <ContactusNew {...props} auth={authProps} />} />
+
               <Route exact path="/contactusupdate" render={(props) => <ContactUsUpdate {...props} auth={authProps} />} />
+              <Route exact path="/contactusupdateNew" render={(props) => <ContactusupdateNew {...props} auth={authProps} />} />
 
               <Route exact path="/userquery" render={(props) => <Userquery {...props} auth={authProps} />} />
+              <Route exact path="/userquerynew" render={(props) => <Userquerynew {...props} auth={authProps} />} />
+
+
               <Route exact path="/userqueries" render={(props) => <UserQueries {...props} auth={authProps} />} />
+              <Route exact path="/userqueriesnew" render={(props) => <UserqueriesNew {...props} auth={authProps} />} />
               
               <Route exact path="/admin" render={(props) => <ProductAdmin {...props} auth={authProps} />} />
               <Route exact path="/login" render={(props) => <LogIn {...props} auth={authProps} />} />

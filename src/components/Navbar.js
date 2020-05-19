@@ -35,14 +35,25 @@ export default class Navbar extends Component {
               Home
             </a>
             <a href="/contactus" className="navbar-item">
-                  Contact Us
+                  ContactUs
+          </a>
+          <a href="/contactusnew" className="navbar-item">
+                  ContactUsNew
           </a>
           <a href="/contactusupdate" className="navbar-item">
-                  Contact Us Update
+                  ContactUsUpdate
+          </a> 
+          <a href="/contactusupdatenew" className="navbar-item">
+                  ContactUsUpdateNew
           </a> 
           <a href="/userqueries" className="navbar-item">
-                  User Queries
+                  UserQueries
           </a>
+
+          <a href="/userqueriesnew" className="navbar-item">
+                  UserQueriesNew
+          </a>
+          
             </div>
           )}
           {this.props.auth.isAuthenticated && (

@@ -1,40 +1,48 @@
-// not needed for this project - new updated one is contactusnew
-
 import React, { Component, Fragment } from 'react';
 import axios from "axios";
 // userquery is used to display the database items to viewable format
 //import Userquery from './UserQuery';
 
-const config = require('../config.json');
+const config = require('../../config.json');
 
-export default class ContactUs extends Component {
+export default class ContactusNew extends Component {
 
   state = {
-    newproduct: { 
-        "email_id": "",
-      "user_name": "", 
-      "user_query": ""
+    newquery: {
+        "query_id": "", 
+        "query_email": "",
+      "query_name": "", 
+      "query_text": "",
+      "query_followup": "",
+      "query_status": ""
     },
-    products: []
+    queries: []
   }
 
-  handleAddProduct = async (email_id, event) => {
+  handleAddProduct = async (query_id, event) => {
     event.preventDefault();
     // add call to AWS API Gateway add product endpoint here
     try {
+       // const now = new Date();
       const params = {
-        "email_id": email_id,
-        "user_name": this.state.newproduct.user_name,
-        "user_query":this.state.newproduct.user_query
+          
+          "query_id": query_id,
+        "query_email": this.state.newquery.query_email,
+        "query_name": this.state.newquery.query_name,
+        "query_text":this.state.newquery.query_text,
+        "query_followup":"",
+        "query_status": ""
+
       };
-      await axios.post(`${config.api.invokeUrl}/contactus/${email_id}`, params);
-      this.setState({ products: [...this.state.products, this.state.newproduct] });
-      this.setState({ newproduct: { "email_id":"", "user_name": "", "user_query": "" }});
+      await axios.post(`${config.api.invokeUrl}/contact-us-new/${query_id}`, params);
+      this.setState({ queries: [...this.state.queries, this.state.newquery] });
+      this.setState({ newquery: { "query_id":"", "query_email": "", "query_name": "", "query_text": "", "query_followup": "", "query_status": "" }});
       //postMessage("Thnaks for your Query");
     }catch (err) {
       console.log(`An error has occurred: ${err}`);
     }
   }
+
 /*
   handleUpdateProduct = async (id, name) => {
     // add call to AWS API Gateway update product endpoint here
@@ -81,9 +89,10 @@ export default class ContactUs extends Component {
     }
   }
 */
-  onAddProductNameChange = event => this.setState({ newproduct: { ...this.state.newproduct, "user_name": event.target.value } });
-  onAddProductIdChange = event => this.setState({ newproduct: { ...this.state.newproduct, "email_id": event.target.value } });
-  onAddProductQueryChange = event => this.setState({ newproduct: { ...this.state.newproduct, "user_query": event.target.value } });
+  onAddProductNameChange = event => this.setState({ newquery: { ...this.state.newquery, "query_name": event.target.value } });
+  onAddProductIdChange = event => this.setState({ newquery: { ...this.state.newquery, "query_email": event.target.value } });
+  onAddProductQueryidChange = event => this.setState({ newquery: { ...this.state.newquery, "query_id": event.target.value } });
+  onAddProductQueryChange = event => this.setState({ newquery: { ...this.state.newquery, "query_text": event.target.value } });
 /*
   componentDidMount = () => {
     this.fetchProducts();
@@ -99,14 +108,24 @@ export default class ContactUs extends Component {
             <br />
             <div className="columns">
               <div className="column is-one-third">
-                <form onSubmit={event => this.handleAddProduct(this.state.newproduct.email_id, event)}>
+                <form onSubmit={event => this.handleAddProduct(this.state.newquery.query_id, event)}>
                   <div className="field has-addons">
                     <div className="control">
+                    <input 
+                        className="input is-medium"
+                        type="text" 
+                        placeholder="Query ID"
+                        value={this.state.newquery.query_id}
+                        onChange={this.onAddProductQueryidChange}
+                      />
+                    </div>
+
+                        <div className="control">
                       <input 
                         className="input is-medium"
                         type="text" 
                         placeholder="Enter name"
-                        value={this.state.newproduct.user_name}
+                        value={this.state.newquery.query_name}
                         onChange={this.onAddProductNameChange}
                       />
                     </div>
@@ -115,7 +134,7 @@ export default class ContactUs extends Component {
                         className="input is-medium"
                         type="text" 
                         placeholder="Enter Email Address"
-                        value={this.state.newproduct.email_id}
+                        value={this.state.newquery.query_email}
                         onChange={this.onAddProductIdChange}
                       />
                     </div>
@@ -124,7 +143,7 @@ export default class ContactUs extends Component {
                         className="input is-medium"
                         type="text" 
                         placeholder="Query"
-                        value={this.state.newproduct.user_query}
+                        value={this.state.newquery.query_text}
                         onChange={this.onAddProductQueryChange}
                       />
                     </div>

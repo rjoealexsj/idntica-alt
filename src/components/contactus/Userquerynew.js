@@ -1,14 +1,12 @@
-// not needed for this project - new updated one is userquerynew.js
-
 import React, { Component, Fragment }  from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default class ContactUsUpdate extends Component {
+export default class ContactusupdateNew extends Component {
 
   state = {
     isEditMode: false,
-    updatedname: this.props.user_name,
-    updatedquery: this.props.user_query
+    updatedname: this.props.query_followup,
+    updatedquery: this.props.query_status
   }
 
   handleProductEdit = event => {
@@ -19,7 +17,7 @@ export default class ContactUsUpdate extends Component {
   handleEditSave = event => {
     event.preventDefault();
     this.setState({ isEditMode: false });
-    this.props.handleUpdateProduct(this.props.email_id, this.state.updatedname, this.state.updatedquery);
+    this.props.handleUpdateProduct(this.props.query_id, this.state.updatedname, this.state.updatedquery);
   }
 
   onAddProductNameChange = event => this.setState({ "updatedname": event.target.value });
@@ -40,7 +38,7 @@ export default class ContactUsUpdate extends Component {
         {
           this.state.isEditMode 
           ? <div>
-              <p>Update User name</p>
+              <p>Enter Follow up Comments</p>
               <input 
                 className="input is-medium"
                 type="text" 
@@ -49,7 +47,7 @@ export default class ContactUsUpdate extends Component {
                 onChange={this.onAddProductNameChange}
               />
 
-              <p>Update Query</p>
+              <p>Enter Status</p>
               <input 
                 className="input is-medium"
                 type="text" 
@@ -58,17 +56,17 @@ export default class ContactUsUpdate extends Component {
                 onChange={this.onAddProductQueryChange}
               />
 
-              <p className="product-id">id: { this.props.email_id }</p>
+              <p className="product-id">id: { this.props.query_id }</p>
               <button type="submit" 
                 className="button is-info is-small"
                 onClick={ this.handleEditSave }
               >save</button>
             </div>
           : <div>
-              <p className="product-title">User Name: {this.props.user_name }</p>
-              <p className="product-id">Email ID:{ this.props.email_id }</p>
+              <p className="product-title">User Name: {this.props.query_name }</p>
+              <p className="product-id">Email ID:{ this.props.query_email}</p>
               
-              <p className="product-id">Query: { this.props.user_query }</p>
+              <p className="product-id">Query: { this.props.query_id }</p>
             </div>
         }
       </div>

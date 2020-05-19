@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import Userquery from './Userquery';
+import Userquerynew from './Userquerynew';
 //import Product from './Product';
 
 import axios from "axios";
-const config = require('../config.json');
+const config = require('../../config.json');
 
-export default class UserQueries extends Component {
+export default class UserqueriesNew extends Component {
 
   state = {
     newproduct: null,
@@ -16,7 +16,7 @@ export default class UserQueries extends Component {
     // add call to AWS API Gateway to fetch products here
     // then set them in state
     try {
-      const res = await axios.get(`${config.api.invokeUrl}/contactus`);
+      const res = await axios.get(`${config.api.invokeUrl}/contact-us-new`);
       //const products = res.data;
       this.setState({ products: res.data });
       const now=new Date();
@@ -35,7 +35,7 @@ export default class UserQueries extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
-            <h1>User Queries</h1>
+            <h1>User Queries New</h1>
 
             <p className="subtitle is-5">Open User Queries :</p>
             <br />
@@ -46,7 +46,7 @@ export default class UserQueries extends Component {
                   <div className="tile is-4 is-parent  is-vertical">
                     { 
                       this.state.products && this.state.products.length > 0
-                      ? this.state.products.map(product => <Userquery user_query= {product.user_query} user_name={product.user_name} email_id={product.email_id} key={product.email_id} />)
+                      ? this.state.products.map(product => <Userquerynew query_id= {product.query_id} query_name={product.query_name} query_email={product.query_email} key={product.query_id} />)
                       : <div className="tile notification is-warning">No Open User Queries</div>
                     }
                   </div>
